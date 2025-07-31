@@ -1,0 +1,60 @@
+site_name: Bërd Lawson ░▒▓ Tutorial de Unity ▓▒░ de 0  a nivel considerable
+site_url: https://lupastance.github.io/unity
+theme:
+  language: es
+  logo: assets/bird/face.png
+  name: material
+  palette:
+    - scheme: default
+      primary: blue grey
+      accent: pink
+      toggle:
+        icon: material/brightness-4
+        name: 💤 Cambiar a modo oscuro
+    
+    - scheme: slate
+      primary: blue grey
+      accent: cyan
+      toggle:
+        icon: material/brightness-7
+        name: 👹 Activar el modo psicópata
+
+  icon:
+    repo: fontawesome/brands/github
+
+  features:
+    - navigation.instant
+    - navigation.instant.progress
+    - search.suggest
+    - search.highlight
+    - header.autohide
+    - content.code.copy
+    - toc.integrate
+
+plugins:
+  - search:
+      lang: es
+
+repo_url: https://github.com/lupastance/unity
+repo_name: lupastance/unity
+
+markdown_extensions:
+  - pymdownx.highlight:
+      auto_title: false
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - attr_list
+  - md_in_html
+  - pymdownx.blocks.caption
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - def_list
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tabbed:
+      alternate_style: true
+
+extra_css:
+  - css/extra.css
