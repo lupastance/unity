@@ -63,10 +63,6 @@ Unity Hub es una aplicación oficial de Unity que sirve como centro de control p
 
 Tenemos varias maneras de descargar Unity Hub:
 
-
-=== "👇 Desde aquí"
-    [💻 Descargar Unity Hub](assets/UnityHubSetup.exe)
-
 === "🌍 A través de la web de Unity"
     [🏃‍♂️ Ve a la web oficial de Unity](https://unity.com/es/download){target=blank}
 
