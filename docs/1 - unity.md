@@ -71,6 +71,10 @@ Tenemos varias maneras de descargar Unity Hub:
         winget install Unity.UnityHub
     ```
 
+=== "👇 Desde Aquí"
+    [1️⃣ Parte 1 de 2](assets/UnityHubSetup.zip.001)<br>
+    [2️⃣ Parte 2 de 2](assets/UnityHubSetup.zip.002)
+
 ---
 
 #### Instalando Unity
