@@ -21,6 +21,7 @@ theme:
 
   icon:
     repo: fontawesome/brands/github
+    annotation: material/star-four-points-circle
 
   features:
     - navigation.instant
@@ -30,6 +31,7 @@ theme:
     - header.autohide
     - content.code.copy
     - toc.integrate
+    - content.tooltips
 
 plugins:
   - search:
@@ -44,13 +46,16 @@ markdown_extensions:
       anchor_linenums: true
       line_spans: __span
       pygments_lang_class: true
+  - abbr
   - attr_list
+  - pymdownx.snippets
   - md_in_html
   - pymdownx.blocks.caption
   - admonition
   - pymdownx.details
   - pymdownx.superfences
   - def_list
+  - footnotes
   - pymdownx.tasklist:
       custom_checkbox: true
   - pymdownx.tabbed:

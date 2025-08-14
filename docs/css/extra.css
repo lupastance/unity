@@ -3,3 +3,29 @@ code {
     white-space: pre-wrap;
     word-break: break-word;
 }
+
+footer {
+    display: none;
+}
+
+strong {
+    color: var(--md-typeset-a-color);
+}
+
+.md-main{
+    padding-bottom: 150px;
+}
+
+.png{
+    filter: drop-shadow(4px 4px 4px rgba(10, 10, 10, .7));
+}
+
+.md-typeset ul {
+    list-style-type: none;
+}
+.md-typeset ul li::before{
+    content: "♦️";
+    color: #ffb14d;
+    margin-right: 8px;
+    filter: drop-shadow(2px 1.5px .5px rgba(10, 10, 10, .5));
+}
