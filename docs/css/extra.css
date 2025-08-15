@@ -22,6 +22,12 @@ strong {
 
 .md-typeset ul {
     list-style-type: none;
+    list-style-position: outside;
+    padding-left: 1.5em;
+}
+.md-typeset ul li{
+    text-indent: -2em;
+    padding-left: 1.5em;
 }
 .md-typeset ul li::before{
     content: "♦️";
