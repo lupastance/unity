@@ -60,10 +60,10 @@ Además, tocaremos algunos principios de diseño de videojuegos: ritmo, dificult
 
 Este tutorial está pensado para personas que:
 
-* [x] Quieren aprender a usar Unity desde un enfoque práctico.
-* [x] Tienen curiosidad por entender cómo se estructura un videojuego completo.
-* [x] Buscan un proyecto sencillo pero estimulante para poner en práctica lo aprendido.
-* [x] Desean experimentar con mecánicas arcade y diseño minimalista.
-* [x] O simplemente, disfrutan de los retos creativos.
+* Quieren aprender a usar Unity desde un enfoque práctico.
+* Tienen curiosidad por entender cómo se estructura un videojuego completo.
+* Buscan un proyecto sencillo pero estimulante para poner en práctica lo aprendido.
+* Desean experimentar con mecánicas arcade y diseño minimalista.
+* O simplemente, disfrutan de los retos creativos.
 
 No necesitas conocimientos previos avanzados en Unity ni en programación, aunque saber lo básico de C# te ayudará. Si es tu primer contacto con Unity, este proyecto será una excelente puerta de entrada. Si ya tienes experiencia, te servirá como base para personalizar y expandir.
