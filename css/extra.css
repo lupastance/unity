@@ -35,3 +35,8 @@ strong {
     margin-right: 8px;
     filter: drop-shadow(2px 1.5px .5px rgba(10, 10, 10, .5));
 }
+
+.center {
+    display: block;
+    margin: 40px auto;
+}

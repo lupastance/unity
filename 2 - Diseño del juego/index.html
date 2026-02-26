@@ -14,12 +14,11 @@
         <link rel="prev" href="../1%20-%20unity/">
       
       
-      
-        
+        <link rel="next" href="../3%20-%20F%C3%ADsicas%20y%20C%C3%B3digo%20del%20juego/">
       
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.3">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.22">
     
     
       
@@ -27,10 +26,10 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.84d31ad4.min.css">
       
         
-        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -61,6 +60,7 @@
     
       
 
+    
     
     
   </head>
@@ -271,14 +271,9 @@
   
   
   <span class="md-ellipsis">
-    
-  
     🏡 Bienvenid@s
-  
-
     
   </span>
-  
   
 
       </a>
@@ -298,14 +293,9 @@
   
   
   <span class="md-ellipsis">
-    
-  
     📦 Unity
-  
-
     
   </span>
-  
   
 
       </a>
@@ -329,23 +319,147 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    🕹️ Diseño del juego
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
   <span class="md-ellipsis">
-    
-  
     🕹️ Diseño del juego
-  
-
     
   </span>
-  
   
 
       </a>
       
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#importando-los-assests" class="md-nav__link">
+    <span class="md-ellipsis">
+      Importando los assests
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#creando-el-protagonista" class="md-nav__link">
+    <span class="md-ellipsis">
+      Creando el protagonista
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Creando el protagonista">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#que-es-un-game-object" class="md-nav__link">
+    <span class="md-ellipsis">
+      ¿Qué es un Game Object
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="¿Qué es un Game Object">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#de-que-esta-compuesto" class="md-nav__link">
+    <span class="md-ellipsis">
+      🧱 ¿De qué está compuesto?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejemplo-practico-si-creas-un-cubo-en-unity" class="md-nav__link">
+    <span class="md-ellipsis">
+      🧩 Ejemplo práctico Si creas un cubo en Unity
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#relacion-jerarquica" class="md-nav__link">
+    <span class="md-ellipsis">
+      🏗 Relación jerárquica
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#anadiento-el-sprite" class="md-nav__link">
+    <span class="md-ellipsis">
+      🐦‍⬛ Añadiento el sprite
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3%20-%20F%C3%ADsicas%20y%20C%C3%B3digo%20del%20juego/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    🏋️ Físicas y Código del juego
+    
+  </span>
+  
+
+      </a>
     </li>
   
 
@@ -360,7 +474,6 @@
           
           
             <div class="md-content" data-md-component="content">
-              
               <article class="md-content__inner md-typeset">
                 
                   
@@ -371,6 +484,82 @@
 
 
 <h1 id="diseno-del-juego">🕹️ Diseño del juego</h1>
+<p>Ya que tenemos el editor de unity instalado en el ordenador y el proyecto creado, empecemos a usar las herramientas que nos brinda Unity para ir creando nuestro juego.</p>
+<p>Tras abrir el proyecto con unity, lo primero que vamos a hacer es <strong>importar los sprites</strong> dentro de nuestro proyecto para que podamos usarlos dentro de nuestro juego.</p>
+<p>👉 <a href="../assets/B%C3%ABrd%20Lawson%20-%20assets.zip">Descarga aquí</a> 👈 el archivo <strong>ZIP</strong> que contiene los sprites que vamos a utilizar para este juego.</p>
+<h2 id="importando-los-assests">Importando los assests</h2>
+<p>En el área "Project" dentro de la interfaz del <strong>Editor de Unity</strong> (abajo del todo), seleccionamos la carpeta <strong>Assets</strong> y a la derecha pinchamos con el botón derecho del ratón y seleccionamos la opción <strong>Import New Asset...</strong></p>
+<p>Podremos seleccionar todos los assets que queramos importar a nuestro proyecto, independientemente de la extesión que tenga; .png .jpg .mp4 .ogg .mp3</p>
+<div class="admonition note">
+<p class="admonition-title">Pinchando y arrastrando</p>
+<p>También podemos pinchar y arrastrar los assets a este apartado del editor para importar los archivos a nuestro proyecto</p>
+</div>
+<p><img alt="" class="center" src="../assets/2-assets.png" /></p>
+<h2 id="creando-el-protagonista">Creando el protagonista</h2>
+<p><img align="right" alt="Bërd Lawson" src="../assets/bird/face.png" width="150" />
+Nuestro protagonista es este simpático pájaro que tiene que atravesar las diferentes tuberías que se encuentran a varias alturas. Vamos a crear el <strong>GameObject</strong> relacionado con nuestro colega "Bërd" para darle vida y poder renderizarlo dentro de nuestro juego.</p>
+<p>Ahora que ya lo hemos importado en nuestra carpeta <strong>Assets</strong> del proyecto, vamos a hacer uso de los sprites que tenemos. Para ello deberemos crear un nuevo <strong>Game Object</strong> y asignar ciertas propiedades, entre ellas, el asset del pájaro.</p>
+<p>Para crear un nuevo <strong>Game Object</strong> pinchamos con  el botón secundario sobre la sección de jerarquía del editor y pinchamos sobre la opción <strong>Create Empty</strong> (o también <strong><em>Ctrl + Shift + N</em></strong> para los pros)</p>
+<p><img alt="" class="center" src="../assets/3-assets.png" /></p>
+<h3 id="que-es-un-game-object">¿Qué es un Game Object</h3>
+<p>En <strong>Unity</strong>, un <strong>GameObject</strong> es la <strong>unidad básica de cualquier elemento dentro de una escena</strong>. En pocas palabras:</p>
+<blockquote>
+<p>👉 Todo lo que ves en un juego hecho con Unity es un <em>GameObject</em>.</p>
+</blockquote>
+<p>Puede representar:</p>
+<ul>
+<li>Un personaje</li>
+<li>Una cámara</li>
+<li>Una luz</li>
+<li>Un enemigo</li>
+<li>Un objeto 3D</li>
+<li>Un botón de UI</li>
+<li>Incluso un objeto vacío usado solo para organización</li>
+</ul>
+<h4 id="de-que-esta-compuesto">🧱 ¿De qué está compuesto?</h4>
+<p>Un GameObject por sí solo es como una <strong>caja vacía</strong>. Lo que le da funcionalidad son los <strong>Componentes</strong>. Por defecto, todo GameObject tiene:</p>
+<ul>
+<li>✅ <code>Transform</code> (posición, rotación y escala)</li>
+</ul>
+<p>Luego puedes agregarle ciertas propiedades:</p>
+<ul>
+<li>🎨 <code>Mesh Renderer</code> → para que se vea</li>
+<li>💡 <code>Light</code> → para que ilumine</li>
+<li>🎮 <code>Collider</code> → para detectar colisiones</li>
+<li>🧠 <code>Script</code> → para darle comportamiento</li>
+<li>🎥 <code>Camera</code> → para mostrar la escena</li>
+</ul>
+<h4 id="ejemplo-practico-si-creas-un-cubo-en-unity">🧩 Ejemplo práctico Si creas un cubo en Unity</h4>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>GameObject (Cube)
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a> ├── Transform
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a> ├── Mesh Filter
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a> ├── Mesh Renderer
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a> └── Box Collider
+</span></code></pre></div>
+<p>Ese cubo es un <strong>GameObject</strong> con varios componentes.</p>
+<h4 id="relacion-jerarquica">🏗 Relación jerárquica</h4>
+<p>Los <strong>GameObjects</strong> pueden tener <strong>padres e hijos</strong>.</p>
+<p>Ejemplo:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>Player (GameObject)
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a> ├── Gun
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a> ├── Camera
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a> └── Shield
+</span></code></pre></div>
+<p>Si el <strong>Player</strong> se mueve, todo lo que es hijo se mueve con él.</p>
+<h3 id="anadiento-el-sprite">🐦‍⬛ Añadiento el sprite</h3>
+<p><img align="right" alt="" src="../assets/2-sprite-renderer.gif" width="350" />
+Cuando creamos nuestro <strong>Game Object</strong> le podemos poner un nombre para poder distinguirlo dentro de nuestro proyecto y lo más importante para nuestro personaje 🐦 asignarle el <strong>sprite</strong> que hemos importando.</p>
+<p>Para ello, debemos <strong>añadir un componente</strong> a nuestro <strong>Game Object</strong>. Para ello, seleccionamos el objeto y en el <strong>Inspector</strong> pinchamos sobre 👉 <strong><em>Add Component</em></strong> y seguimos los siguientes pasos para asignarle la imagen como srpite:</p>
+<ul>
+<li>En la lista de componentes seleccionamos <strong>Sprite Renderer</strong></li>
+<li>En el <strong>Inspector</strong> pinchamos y arrastramos el asset que queramos al input <strong>Sprite</strong></li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Visualizando el resultado</p>
+<p>Ahora que ya tenemos el primer sprite, podemos renderizarlo para ver cómo quedaría el resultado final. Para ello pinchamos sobre el icono de play ▶️ y Unity empezará a renderizar toda nuestra escena.</p>
+<p>Así mismo, podremos cambiar las propiedades de nuestro objeto para poder ajustar el tamaño y demás propiedades.</p>
+<p>👁️ Que no se te olvide establecer una resolución dentro de la escena para ver un ejemplo lo más real posible.</p>
+</div>
 
 
 
@@ -421,11 +610,10 @@
     
     
       
-      
-      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.instant", "navigation.instant.progress", "search.suggest", "search.highlight", "header.autohide", "content.code.copy", "toc.integrate", "content.tooltips"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}, "version": null}</script>
+      <script id="__config" type="application/json">{"base": "..", "features": ["navigation.instant", "navigation.instant.progress", "search.suggest", "search.highlight", "header.autohide", "content.code.copy", "toc.integrate", "content.tooltips"], "search": "../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}, "version": null}</script>
     
     
-      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../assets/javascripts/bundle.f55a23d4.min.js"></script>
       
     
   </body>
