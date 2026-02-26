@@ -101,7 +101,7 @@ Con Visual Studio tendrás más compatibilidad con Unity a la hora de hacer uso 
 
 1.  **IntelliSense** es una característica de los editores de código y entornos de desarrollo integrado (*IDE*) que facilita la codificación al ofrecer ayuda para la finalización de código, información sobre parámetros y miembros, y más.<br><br>ℹ️ Es una herramienta útil para la productividad y la reducción de errores al escribir código.
    
-La única ❌desventaja❌ de usar **s** es que requiere bastante más memoria RAM y puede que a la hora de guardar nuestros `scripts` y sincronizarse con Unity, tarde un poco más de la cuenta.
+La única ❌desventaja❌ de usar **Visual Studio** es que requiere bastante más memoria RAM y puede que a la hora de guardar nuestros `scripts` y sincronizarse con Unity, tarde un poco más de la cuenta.
 
 ## ➕ Creando un proyecto
 
