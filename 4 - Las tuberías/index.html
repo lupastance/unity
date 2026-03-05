@@ -408,6 +408,135 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="La tuberia como GameObject">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#anadiendo-el-script-a-nuestra-tuberia" class="md-nav__link">
+    <span class="md-ellipsis">
+      📃 Añadiendo el script a nuestra tubería
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📃 Añadiendo el script a nuestra tubería">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#delta-time" class="md-nav__link">
+    <span class="md-ellipsis">
+      ⌛ Delta Time
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="⌛ Delta Time">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#la-idea-basica" class="md-nav__link">
+    <span class="md-ellipsis">
+      🧠 La idea básica
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#problema-sin-deltatime" class="md-nav__link">
+    <span class="md-ellipsis">
+      ⚠️ Problema sin deltaTime
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#solucion-con-deltatime" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ Solución con deltaTime
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejemplo" class="md-nav__link">
+    <span class="md-ellipsis">
+      📊 Ejemplo
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejemplo-tipico-en-unity" class="md-nav__link">
+    <span class="md-ellipsis">
+      🎮 Ejemplo típico en Unity
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#regla-de-oro-en-unity" class="md-nav__link">
+    <span class="md-ellipsis">
+      🧩 Regla de oro en Unity
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#corrigiendo-el-script-de-las-tuberias" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔰 Corrigiendo el script de las tuberías
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔰 Corrigiendo el script de las tuberías">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mas-tuberias-queremos-infinitas" class="md-nav__link">
+    <span class="md-ellipsis">
+      🧪🧪🧪 Más tuberías, queremos infinitas!
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🧪🧪🧪 Más tuberías, queremos infinitas!">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#usando-nuestro-prefab-en-el-proyecto" class="md-nav__link">
+    <span class="md-ellipsis">
+      Usando nuestro 🗺️ Prefab en el proyecto
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
     </ul>
@@ -459,6 +588,157 @@
   <source src="../assets/pipes.mp4" type="video/mp4">
   Tu navegador no soporta el video.
 </video>
+
+<h3 id="anadiendo-el-script-a-nuestra-tuberia">📃 Añadiendo el script a nuestra tubería</h3>
+<p>Ahora que ya hemos acabado con el apartado gráfico de la tubería, necesitamos agregar un script para que se comporte como nosotros queramos. Por lo tanto, añadimos un nuevo script que lo llamaremos 👉 <code>PipeMoveScript</code>. ‼️<strong>PERO MUY IMPORTANTE</strong>‼️debemos agregar el script al <strong>objeto padre</strong> no a la tubería top ni a la bottom:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:1"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Hierarchy</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block"></div>
+</div>
+</div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>Main Camera
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>Global Light 2D
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>Bird
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>Pipe 👈 /*\ Añadimos el Script a este GameObject
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a> ├── Top Pipe
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a> └── Bottom Pipe
+</span></code></pre></div>
+<p>Nuestro script tiene que hacer que el <strong>GameObject</strong> de las tuberias (Pipe) se mueva de derecha a izquierda, para que crea un efecto como si el <strong>pájaro</strong> estuviera volando de izquierda a derecha.</p>
+<p>Para ello deberemos tocar las propiedad <strong>Transform</strong> dentro de nuestro <strong>GameObject</strong>. Probemos a establecer una velocidad predeterminada, creando una variable que se llame <strong>moveSpeed</strong> y la inicializamos a 5, por ejemplo.</p>
+<div class="language-csharp highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">using</span><span class="w"> </span><span class="nn">UnityEngine</span><span class="p">;</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">PipeMoveScript</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">MonoBehaviour</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="p">{</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">moveSpeed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">    </span><span class="c1">// Start is called once before the first execution of Update after the MonoBehaviour is created</span>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">    </span><span class="k">void</span><span class="w"> </span><span class="nf">Start</span><span class="p">()</span>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">    </span><span class="p">{</span>
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>
+</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="w">    </span><span class="c1">// Update is called once per frame</span>
+</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="w">    </span><span class="k">void</span><span class="w"> </span><span class="nf">Update</span><span class="p">()</span>
+</span><span id="__span-1-14"><a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="w">    </span><span class="p">{</span>
+</span><span id="__span-1-15"><a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="w">        </span><span class="n">transform</span><span class="p">.</span><span class="n">position</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">transform</span><span class="p">.</span><span class="n">position</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="n">Vector3</span><span class="p">.</span><span class="n">left</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">moveSpeed</span><span class="p">);</span>
+</span><span id="__span-1-16"><a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-1-17"><a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a><span class="p">}</span>
+</span></code></pre></div>
+<div class="admonition bug">
+<p class="admonition-title">Iniciando el juego</p>
+<p>Mira a ver si consigues ver el movimiento de las tuberias 🏃‍♀️... parece que no, vamos a configurar el DeltaTime mejor. Si revisas los "Stats" dentro del menú de renderizado, en el panel Juego, verás que el juego está cargando a una cantidad absurdamente elevada de FPS.</p>
+</div>
+<h4 id="delta-time">⌛ Delta Time</h4>
+<p>En <strong>Unity</strong>, <strong><code>deltaTime</code></strong> es el <strong>tiempo que ha pasado entre un frame y el siguiente</strong>.</p>
+<p>Se usa para que el juego <strong>funcione a la misma velocidad independientemente de los FPS</strong>.</p>
+<h5 id="la-idea-basica">🧠 La idea básica</h5>
+<p>Los juegos se actualizan <strong>frame por frame</strong>.</p>
+<p>Por ejemplo:</p>
+<table>
+<thead>
+<tr>
+<th>FPS</th>
+<th>Tiempo entre frames</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>60 FPS</td>
+<td>~0.016 segundos</td>
+</tr>
+<tr>
+<td>30 FPS</td>
+<td>~0.033 segundos</td>
+</tr>
+<tr>
+<td>120 FPS</td>
+<td>~0.008 segundos</td>
+</tr>
+</tbody>
+</table>
+<p>Ese tiempo entre frames es <strong><code>Time.deltaTime</code></strong>.</p>
+<h5 id="problema-sin-deltatime">⚠️ Problema sin <code>deltaTime</code></h5>
+<p>Imagina que mueves un objeto así:</p>
+<div class="language-csharp highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">transform</span><span class="p">.</span><span class="n">position</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">Vector3</span><span class="p">.</span><span class="n">right</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span>
+</span></code></pre></div>
+<p>Esto ocurre <strong>cada frame</strong>.</p>
+<p>Entonces:</p>
+<ul>
+<li>A <strong>30 FPS</strong> → se mueve 30 veces por segundo</li>
+<li>A <strong>120 FPS</strong> → se mueve 120 veces por segundo</li>
+</ul>
+<p>💥 Resultado: el objeto va <strong>4 veces más rápido</strong> en PCs potentes.</p>
+<h5 id="solucion-con-deltatime">✅ Solución con <code>deltaTime</code></h5>
+<div class="language-csharp highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">transform</span><span class="p">.</span><span class="n">position</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">Vector3</span><span class="p">.</span><span class="n">right</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">Time</span><span class="p">.</span><span class="n">deltaTime</span><span class="p">;</span>
+</span></code></pre></div>
+<p>Ahora el movimiento depende del <strong>tiempo real</strong>, no del número de frames.</p>
+<h5 id="ejemplo">📊 Ejemplo</h5>
+<p>Si quieres moverte a <strong>5 unidades por segundo</strong>:</p>
+<div class="language-csharp highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="mi">5</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">Time</span><span class="p">.</span><span class="n">deltaTime</span>
+</span></code></pre></div>
+<p>Si el frame dura:</p>
+<ul>
+<li><strong>0.016 s (60 FPS)</strong> → mueve <code>0.08</code></li>
+<li><strong>0.033 s (30 FPS)</strong> → mueve <code>0.165</code></li>
+</ul>
+<p>Pero al final del segundo → se moverá <strong>5 unidades igualmente</strong>.</p>
+<h5 id="ejemplo-tipico-en-unity">🎮 Ejemplo típico en Unity</h5>
+<div class="language-csharp highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="k">void</span><span class="w"> </span><span class="nf">Update</span><span class="p">()</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="p">{</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">    </span><span class="n">transform</span><span class="p">.</span><span class="n">Translate</span><span class="p">(</span><span class="n">Vector3</span><span class="p">.</span><span class="n">right</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">5f</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">Time</span><span class="p">.</span><span class="n">deltaTime</span><span class="p">);</span>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="p">}</span>
+</span></code></pre></div>
+<p>Esto significa:</p>
+<blockquote>
+<p>"Muévete a 5 unidades por segundo hacia la derecha".</p>
+</blockquote>
+<h5 id="regla-de-oro-en-unity">🧩 Regla de oro en Unity</h5>
+<p>Usa <strong><code>Time.deltaTime</code></strong> cuando hagas cosas que dependen del tiempo:</p>
+<p>✅ Movimiento
+✅ Rotación
+✅ Animaciones manuales
+✅ Temporizadores</p>
+<h3 id="corrigiendo-el-script-de-las-tuberias">🔰 Corrigiendo el script de las tuberías</h3>
+<p>Veamos cómo podemos adaptar el <strong>Delta Time</strong> a nuestro códido, dentro del script <strong>PipeMoveScript.cs</strong>. Simplemente deberemos multiplicar nuestro vetor de movimiento y la velocidad por el <strong>delta time</strong></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:1"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">🔹PipeMoveScript.cs</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block"></div>
+</div>
+</div>
+<div class="language-csharp highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="k">using</span><span class="w"> </span><span class="nn">UnityEngine</span><span class="p">;</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">PipeMoveScript</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">MonoBehaviour</span>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="p">{</span>
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">moveSpeed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span>
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="w">    </span><span class="c1">// Start is called once before the first execution of Update after the MonoBehaviour is created</span>
+</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="w">    </span><span class="k">void</span><span class="w"> </span><span class="nf">Start</span><span class="p">()</span>
+</span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="w">    </span><span class="p">{</span>
+</span><span id="__span-6-9"><a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a>
+</span><span id="__span-6-10"><a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-6-11"><a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a>
+</span><span id="__span-6-12"><a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a><span class="w">    </span><span class="c1">// Update is called once per frame</span>
+</span><span id="__span-6-13"><a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a><span class="w">    </span><span class="k">void</span><span class="w"> </span><span class="nf">Update</span><span class="p">()</span>
+</span><span id="__span-6-14"><a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a><span class="w">    </span><span class="p">{</span>
+</span><span id="__span-6-15"><a id="__codelineno-6-15" name="__codelineno-6-15" href="#__codelineno-6-15"></a><span class="w">        </span><span class="n">transform</span><span class="p">.</span><span class="n">position</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">transform</span><span class="p">.</span><span class="n">position</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="n">Vector3</span><span class="p">.</span><span class="n">left</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">moveSpeed</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">Time</span><span class="p">.</span><span class="n">deltaTime</span><span class="p">;</span>
+</span><span id="__span-6-16"><a id="__codelineno-6-16" name="__codelineno-6-16" href="#__codelineno-6-16"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-6-17"><a id="__codelineno-6-17" name="__codelineno-6-17" href="#__codelineno-6-17"></a><span class="p">}</span>
+</span></code></pre></div>
+<div class="admonition info">
+<p class="admonition-title">Documentación oficial 👉 Delta Time</p>
+<p>Si quieres saber más sobre Delta Time, puedes echar un vistazo a la documentación oficial
+<br>➡️<a href="https://docs.unity3d.com/es/530/ScriptReference/Time-deltaTime.html" target="_blank">a través de este enlace</a>⬅️</p>
+</div>
+<h4 id="mas-tuberias-queremos-infinitas">🧪🧪🧪 Más tuberías, queremos infinitas!</h4>
+<p><img alt="" class="center" src="../assets/prefab.gif" width="250" /></p>
+<p>La idea del juego es que sea una única escena (pantalla) donde se genere infinítamente nuestro objeto de tubería (tanto la de arriba como la de abajo) y que vayan apareciendo de derecha a izquierda en nuestra escena. Algo así como hacer un <code>do~while</code> pero sin condición que pare de crear el objeto tubería. Para ello crearemos el primer <strong>PreFab</strong> que, si no nos acordamos de qué era 👇</p>
+<div class="admonition note">
+<p class="admonition-title">🗺️ Prefab</p>
+<p>Es una plantilla de un GameObject que se puede reutilizar en diferentes partes del proyecto. Al modificar el prefab original, todos los objetos instanciados a partir de él se actualizan automáticamente, lo que ahorra tiempo y mantiene la coherencia. Es como un GameObject que has frabicado tú, con sus propiedades y que puedes instanciar en la escena.</p>
+</div>
+<p>para crear nuestro <strong>Prefab</strong> de nuestro objeto <strong>Pipe</strong>, es tan fácil como seleccionar el objeto <strong>Pipe</strong> en el panel izquierdo y arrastrarlo al panel de <strong>Assets</strong>. Una vez hecho esto, ya no necsitamos nuestro objeto <strong>Pipe</strong> en la jerarquía de los <strong>GameObject</strong> así que lo podemos borrar ⬇️</p>
+<p><img alt="" class="center" src="../assets/prefab-2.gif" width="800" /></p>
+<h5 id="usando-nuestro-prefab-en-el-proyecto">Usando nuestro 🗺️ Prefab en el proyecto</h5>
+<p>Ahora que ya tenemos nuestros <strong>Planos</strong> de las tuberias para poder crear todas las que queramos, vamos a preparar un nuevo molde, o lo que es lo mismo, un <strong>GameObject</strong> que esté enlazado a este plano. Lo llamaremos <strong>Pipe Spawner</strong> y crearemos un script dentro que se llame <strong>PipeSwpanerScript</strong>.</p>
+<p>El siguiente paso será enlazar nuestro <strong>Prefab</strong> al objeto del juego que acabamos de crear <strong>Pipe Spawner</strong>, así que vamos a crear un nuevo input y arrastrar nuestro prefab a dicho input.</p>
 
 
 
