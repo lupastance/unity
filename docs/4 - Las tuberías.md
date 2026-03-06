@@ -192,8 +192,220 @@ para crear nuestro **Prefab** de nuestro objeto **Pipe**, es tan fácil como sel
 ![](assets/prefab-2.gif){ width="800" .center }
 
 
-##### Usando nuestro 🗺️ Prefab en el proyecto
+##### 🗺️ Usando nuestro Prefab en el proyecto
 
 Ahora que ya tenemos nuestros **Planos** de las tuberias para poder crear todas las que queramos, vamos a preparar un nuevo molde, o lo que es lo mismo, un **GameObject** que esté enlazado a este plano. Lo llamaremos **Pipe Spawner** y crearemos un script dentro que se llame **PipeSwpanerScript**.
 
 El siguiente paso será enlazar nuestro **Prefab** al objeto del juego que acabamos de crear **Pipe Spawner**, así que vamos a crear un nuevo input y arrastrar nuestro prefab a dicho input.
+
+##### 🪴 Creando el script de las tuberías
+
+Al enlazar nuestro objeto del juego **Pipe Spawner** con nuestro prefab **Pipe** que hemos creado anteriormente, ya estamos listos para codear el script de las tuberías.
+
+!!!warning "👀 lo que tiene que hacer el script"
+    La idea de este script es que vaya creando una instancia de nuestro prefab **Pipe** cada ciertos segundos para que vayan apareciendo tuberías en la pantalla de manera aleatoria.
+
+=== "🔹PipeSpawnerScript.cs"
+```csharp
+using UnityEngine;
+
+public class PipeSpawnerScript : MonoBehaviour
+{
+    // Creando el input en el editor de Unity (la propiedad)
+    // donde enlazamos el objeto prefab 👉 Pipe
+    public GameObject pipe;
+
+    void Start()
+    {
+        
+    }
+
+    void Update()
+    {
+        // Instanciamos el prefab 'pipe' y le pasamos la posición su rotación
+        Instantiate(pipe, transform.position, transform.rotation);
+    }
+}
+```
+
+!!!bug "Bugazo"
+    Volvemos al editor de Unity y ejecutamos el juego. Observemos qué es lo que pasa 👇
+
+![](assets/fpsss.gif){ .center width="800"}
+
+Lo que está pasando en este ejemplo es que por cada *frame* que pasa en el juego, se instancia el objeto pipe además de que no estamos controlando cuándo se elimina ese objeto isntanciado. Por tanto, si nuestro juego va a `30 / 60 / 120` FPS se crearán `30 / 60 / 120` instancias de ese objeto **Pipe** por cada segundo de juego que pase, por lo tanto, nuestro sistema se colapsa. Vamos a controlarlo con **Delta Time** y un ***timer*** que vaya controlando cuándo debe dispararse la instancia.
+
+!!!note "⏱️El timer"
+    Ten en cuenta que lo que queremos es que se genere una tubería cada *X* segundos para que haya un espacio entre tubería y tubería. Eso es lo que va a hacer este timer, esperarse.
+
+---
+##### 🧠 Idea general del script
+---
+
+El script está comprobando continuamente:
+
+> “¿Ya pasó suficiente tiempo para crear un nuevo objeto?”
+
+Si **no ha pasado**, sigue contando tiempo.
+Si **ya pasó**, crea el objeto y reinicia el contador.
+
+=== "🔹PipeSpawnerScript.cs"
+```csharp
+using UnityEngine;
+
+public class PipeSpawnerScript : MonoBehaviour
+{
+    // Creando el input en el editor de Unity (la propiedad)
+    // donde enlazamos el objeto prefab 👉 Pipe
+    public GameObject pipe;
+    public float spawnRate = 2; // cantidad en segundos que debe pasar entre apariciones
+    private float timer = 0; // Lo hacemos privado porque no lo vamos a cambiar en ningún sitio
+
+
+    void Start()
+    {
+
+    }
+
+    void Update()
+    {
+        // Si el contador es MENOR que la tasa de generación
+        // Entonces el temporaizador cuenta en 1
+        if(timer < spawnRate)
+        {
+            timer = timer + Time.deltaTime;    
+        }
+        
+        else
+        {
+            // Instanciamos el prefab 'pipe' y le pasamos la posición su rotación
+            Instantiate(pipe, transform.position, transform.rotation);
+            timer = 0;
+        }
+
+    }
+}
+```
+
+
+!!!tip "1️⃣ `timer`"
+    Es una variable que guarda **cuánto tiempo ha pasado** desde el último spawn.
+    Va aumentando poco a poco.
+
+!!!note "2️⃣ `spawnRate`"
+    Es **cada cuánto tiempo quieres generar un objeto**.
+    > crear un objeto **cada 2 segundos**.
+
+!!!warning "3️⃣ La condición `if`""
+    > Si el tiempo que ha pasado es **menor que el tiempo necesario para generar otro objeto**.
+
+Ejemplo 👇
+
+| timer | spawnRate | Resultado       |
+| ----- | --------- | --------------- |
+| 0.5   | 2         | sigue esperando |
+| 1.2   | 2         | sigue esperando |
+| 1.9   | 2         | sigue esperando |
+
+
+!!!success "4️⃣ Aumentar el tiempo"
+
+```csharp
+timer = timer + Time.deltaTime;
+```
+
+Esto añade **el tiempo que pasó desde el último frame**.
+
+Por ejemplo:
+
+| Frame | deltaTime | timer |
+| ----- | --------- | ----- |
+| 1     | 0.016     | 0.016 |
+| 2     | 0.016     | 0.032 |
+| 3     | 0.016     | 0.048 |
+
+Así el temporizador va subiendo **de forma realista y estable** independientemente del número de `FPS` a los que se esté ejecutando nuestro juego.
+
+---
+
+!!!question "5️⃣ Cuando el tiempo se cumple"
+
+Cuando `timer` llega a `spawnRate`, se ejecuta el `else` y **crea un objeto nuevo**.
+
+`Instantiate` significa literalmente:
+
+> crear una copia de un objeto.
+
+Parámetros:
+
+| Parámetro            | Significado                 |
+| -------------------- | --------------------------- |
+| `pipe`               | el prefab que quieres crear |
+| `transform.position` | dónde aparece               |
+| `transform.rotation` | con qué rotación            |
+
+!!!example "6️⃣ Reiniciar el temporizador"
+
+```csharp
+timer = 0;
+```
+
+Esto hace que el contador **empiece otra vez**.
+
+---
+##### 💪 Mejorando el script
+---
+
+Ahora ya tenemos el script que genera las tuberías desde el `prefab` que habíamos creado anteriormente, además se controla la generación de la instancia y el juego va sacando tuberías cada cierto tiempo.
+
+Pero hemos notado que las primeras tuberías tardan cierto tiempo en aparecer en pantalla y se ve algo cutre. Lo que podemos hacer es que se cree una instancia de las tuberías **nada más arrancar** el juego. Así que si queremos ese efecto, lo que tendremos que hacer es poner el código de la instancia de las tuberías en nuestra función `Start()` para que sea lo primero que se ejecute cuando se renderice nuestro juego.
+
+=== "🔹PipeSpawnerScript.cs"
+```csharp
+using UnityEngine;
+
+public class PipeSpawnerScript : MonoBehaviour
+{
+    // Creando el input en el editor de Unity (la propiedad)
+    // donde enlazamos el objeto prefab 👉 Pipe
+    public GameObject pipe;
+    public float spawnRate = 2; // cantidad en segundos que debe pasar entre apariciones
+    private float timer = 0; // Lo hacemos privado porque no lo vamos a cambiar en ningún sitio
+
+
+    void Start()
+    {
+        SpawnPipe();
+    }
+
+    void Update()
+    {
+        // Si el contador es MENOR que la tasa de generación
+        // Entonces el temporaizador cuenta en 1
+        if(timer < spawnRate)
+        {
+            timer = timer + Time.deltaTime;    
+        }
+        
+        else
+        {
+            // Instanciamos el prefab 'pipe' y le pasamos la posición su rotación
+            SpawnPipe();
+            timer = 0;
+        }
+
+    }
+
+    void SpawnPipe()
+    {
+        Instantiate(pipe, transform.position, transform.rotation);
+    }
+}
+```
+
+Si te fijas, hemos creado una función que se llama `SpawnPipe()` que lo que hace es justo lo que buscábamos antes, crear una instancia de las tuberías.
+
+Esta función es llamada tanto al inicio del juego como por cada vez que queramos que se genere un nuevo par de tuberías. Así no repetimos código y limpiamos un poco nuestro script.
+
+### 🔢 tuberías con posición aleatoria
+
