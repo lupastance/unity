@@ -518,7 +518,34 @@
           <li class="md-nav__item">
   <a href="#usando-nuestro-prefab-en-el-proyecto" class="md-nav__link">
     <span class="md-ellipsis">
-      Usando nuestro 🗺️ Prefab en el proyecto
+      🗺️ Usando nuestro Prefab en el proyecto
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#creando-el-script-de-las-tuberias" class="md-nav__link">
+    <span class="md-ellipsis">
+      🪴 Creando el script de las tuberías
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#idea-general-del-script" class="md-nav__link">
+    <span class="md-ellipsis">
+      🧠 Idea general del script
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mejorando-el-script" class="md-nav__link">
+    <span class="md-ellipsis">
+      💪 Mejorando el script
     </span>
   </a>
   
@@ -526,6 +553,15 @@
         
       </ul>
     </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tuberias-con-posicion-aleatoria" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔢 Tuberías con posición aleatoria
+    </span>
+  </a>
   
 </li>
         
@@ -736,9 +772,414 @@
 </div>
 <p>para crear nuestro <strong>Prefab</strong> de nuestro objeto <strong>Pipe</strong>, es tan fácil como seleccionar el objeto <strong>Pipe</strong> en el panel izquierdo y arrastrarlo al panel de <strong>Assets</strong>. Una vez hecho esto, ya no necsitamos nuestro objeto <strong>Pipe</strong> en la jerarquía de los <strong>GameObject</strong> así que lo podemos borrar ⬇️</p>
 <p><img alt="" class="center" src="../assets/prefab-2.gif" width="800" /></p>
-<h5 id="usando-nuestro-prefab-en-el-proyecto">Usando nuestro 🗺️ Prefab en el proyecto</h5>
+<h5 id="usando-nuestro-prefab-en-el-proyecto">🗺️ Usando nuestro Prefab en el proyecto</h5>
 <p>Ahora que ya tenemos nuestros <strong>Planos</strong> de las tuberias para poder crear todas las que queramos, vamos a preparar un nuevo molde, o lo que es lo mismo, un <strong>GameObject</strong> que esté enlazado a este plano. Lo llamaremos <strong>Pipe Spawner</strong> y crearemos un script dentro que se llame <strong>PipeSwpanerScript</strong>.</p>
 <p>El siguiente paso será enlazar nuestro <strong>Prefab</strong> al objeto del juego que acabamos de crear <strong>Pipe Spawner</strong>, así que vamos a crear un nuevo input y arrastrar nuestro prefab a dicho input.</p>
+<h5 id="creando-el-script-de-las-tuberias">🪴 Creando el script de las tuberías</h5>
+<p>Al enlazar nuestro objeto del juego <strong>Pipe Spawner</strong> con nuestro prefab <strong>Pipe</strong> que hemos creado anteriormente, ya estamos listos para codear el script de las tuberías.</p>
+<div class="admonition warning">
+<p class="admonition-title">👀 lo que tiene que hacer el script</p>
+<p>La idea de este script es que vaya creando una instancia de nuestro prefab <strong>Pipe</strong> cada ciertos segundos para que vayan apareciendo tuberías en la pantalla de manera aleatoria.</p>
+</div>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:1"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">🔹PipeSpawnerScript.cs</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block"></div>
+</div>
+</div>
+<div class="language-csharp highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="k">using</span><span class="w"> </span><span class="nn">UnityEngine</span><span class="p">;</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">PipeSpawnerScript</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">MonoBehaviour</span>
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="p">{</span>
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="w">    </span><span class="c1">// Creando el input en el editor de Unity (la propiedad)</span>
+</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="w">    </span><span class="c1">// donde enlazamos el objeto prefab 👉 Pipe</span>
+</span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="n">GameObject</span><span class="w"> </span><span class="n">pipe</span><span class="p">;</span>
+</span><span id="__span-7-8"><a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a>
+</span><span id="__span-7-9"><a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a><span class="w">    </span><span class="k">void</span><span class="w"> </span><span class="nf">Start</span><span class="p">()</span>
+</span><span id="__span-7-10"><a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a><span class="w">    </span><span class="p">{</span>
+</span><span id="__span-7-11"><a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a>
+</span><span id="__span-7-12"><a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-7-13"><a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a>
+</span><span id="__span-7-14"><a id="__codelineno-7-14" name="__codelineno-7-14" href="#__codelineno-7-14"></a><span class="w">    </span><span class="k">void</span><span class="w"> </span><span class="nf">Update</span><span class="p">()</span>
+</span><span id="__span-7-15"><a id="__codelineno-7-15" name="__codelineno-7-15" href="#__codelineno-7-15"></a><span class="w">    </span><span class="p">{</span>
+</span><span id="__span-7-16"><a id="__codelineno-7-16" name="__codelineno-7-16" href="#__codelineno-7-16"></a><span class="w">        </span><span class="c1">// Instanciamos el prefab &#39;pipe&#39; y le pasamos la posición su rotación</span>
+</span><span id="__span-7-17"><a id="__codelineno-7-17" name="__codelineno-7-17" href="#__codelineno-7-17"></a><span class="w">        </span><span class="n">Instantiate</span><span class="p">(</span><span class="n">pipe</span><span class="p">,</span><span class="w"> </span><span class="n">transform</span><span class="p">.</span><span class="n">position</span><span class="p">,</span><span class="w"> </span><span class="n">transform</span><span class="p">.</span><span class="n">rotation</span><span class="p">);</span>
+</span><span id="__span-7-18"><a id="__codelineno-7-18" name="__codelineno-7-18" href="#__codelineno-7-18"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-7-19"><a id="__codelineno-7-19" name="__codelineno-7-19" href="#__codelineno-7-19"></a><span class="p">}</span>
+</span></code></pre></div>
+<div class="admonition bug">
+<p class="admonition-title">Bugazo</p>
+<p>Volvemos al editor de Unity y ejecutamos el juego. Observemos qué es lo que pasa 👇</p>
+</div>
+<p><img alt="" class="center" src="../assets/fpsss.gif" width="800" /></p>
+<p>Lo que está pasando en este ejemplo es que por cada <em>frame</em> que pasa en el juego, se instancia el objeto pipe además de que no estamos controlando cuándo se elimina ese objeto isntanciado. Por tanto, si nuestro juego va a <code>30 / 60 / 120</code> FPS se crearán <code>30 / 60 / 120</code> instancias de ese objeto <strong>Pipe</strong> por cada segundo de juego que pase, por lo tanto, nuestro sistema se colapsa. Vamos a controlarlo con <strong>Delta Time</strong> y un <strong><em>timer</em></strong> que vaya controlando cuándo debe dispararse la instancia.</p>
+<div class="admonition note">
+<p class="admonition-title">⏱️El timer</p>
+<p>Ten en cuenta que lo que queremos es que se genere una tubería cada <em>X</em> segundos para que haya un espacio entre tubería y tubería. Eso es lo que va a hacer este timer, esperarse.</p>
+</div>
+<hr />
+<h5 id="idea-general-del-script">🧠 Idea general del script</h5>
+<hr />
+<p>El script está comprobando continuamente:</p>
+<blockquote>
+<p>“¿Ya pasó suficiente tiempo para crear un nuevo objeto?”</p>
+</blockquote>
+<p>Si <strong>no ha pasado</strong>, sigue contando tiempo.
+Si <strong>ya pasó</strong>, crea el objeto y reinicia el contador.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:1"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">🔹PipeSpawnerScript.cs</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block"></div>
+</div>
+</div>
+<div class="language-csharp highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="k">using</span><span class="w"> </span><span class="nn">UnityEngine</span><span class="p">;</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">PipeSpawnerScript</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">MonoBehaviour</span>
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="p">{</span>
+</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="w">    </span><span class="c1">// Creando el input en el editor de Unity (la propiedad)</span>
+</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="w">    </span><span class="c1">// donde enlazamos el objeto prefab 👉 Pipe</span>
+</span><span id="__span-8-7"><a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="n">GameObject</span><span class="w"> </span><span class="n">pipe</span><span class="p">;</span>
+</span><span id="__span-8-8"><a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a><span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">spawnRate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span><span class="w"> </span><span class="c1">// cantidad en segundos que debe pasar entre apariciones</span>
+</span><span id="__span-8-9"><a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a><span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">timer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="c1">// Lo hacemos privado porque no lo vamos a cambiar en ningún sitio</span>
+</span><span id="__span-8-10"><a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a>
+</span><span id="__span-8-11"><a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a>
+</span><span id="__span-8-12"><a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a><span class="w">    </span><span class="k">void</span><span class="w"> </span><span class="nf">Start</span><span class="p">()</span>
+</span><span id="__span-8-13"><a id="__codelineno-8-13" name="__codelineno-8-13" href="#__codelineno-8-13"></a><span class="w">    </span><span class="p">{</span>
+</span><span id="__span-8-14"><a id="__codelineno-8-14" name="__codelineno-8-14" href="#__codelineno-8-14"></a>
+</span><span id="__span-8-15"><a id="__codelineno-8-15" name="__codelineno-8-15" href="#__codelineno-8-15"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-8-16"><a id="__codelineno-8-16" name="__codelineno-8-16" href="#__codelineno-8-16"></a>
+</span><span id="__span-8-17"><a id="__codelineno-8-17" name="__codelineno-8-17" href="#__codelineno-8-17"></a><span class="w">    </span><span class="k">void</span><span class="w"> </span><span class="nf">Update</span><span class="p">()</span>
+</span><span id="__span-8-18"><a id="__codelineno-8-18" name="__codelineno-8-18" href="#__codelineno-8-18"></a><span class="w">    </span><span class="p">{</span>
+</span><span id="__span-8-19"><a id="__codelineno-8-19" name="__codelineno-8-19" href="#__codelineno-8-19"></a><span class="w">        </span><span class="c1">// Si el contador es MENOR que la tasa de generación</span>
+</span><span id="__span-8-20"><a id="__codelineno-8-20" name="__codelineno-8-20" href="#__codelineno-8-20"></a><span class="w">        </span><span class="c1">// Entonces el temporaizador cuenta en 1</span>
+</span><span id="__span-8-21"><a id="__codelineno-8-21" name="__codelineno-8-21" href="#__codelineno-8-21"></a><span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="n">timer</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">spawnRate</span><span class="p">)</span>
+</span><span id="__span-8-22"><a id="__codelineno-8-22" name="__codelineno-8-22" href="#__codelineno-8-22"></a><span class="w">        </span><span class="p">{</span>
+</span><span id="__span-8-23"><a id="__codelineno-8-23" name="__codelineno-8-23" href="#__codelineno-8-23"></a><span class="w">            </span><span class="n">timer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">timer</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">Time</span><span class="p">.</span><span class="n">deltaTime</span><span class="p">;</span><span class="w">    </span>
+</span><span id="__span-8-24"><a id="__codelineno-8-24" name="__codelineno-8-24" href="#__codelineno-8-24"></a><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-8-25"><a id="__codelineno-8-25" name="__codelineno-8-25" href="#__codelineno-8-25"></a>
+</span><span id="__span-8-26"><a id="__codelineno-8-26" name="__codelineno-8-26" href="#__codelineno-8-26"></a><span class="w">        </span><span class="k">else</span>
+</span><span id="__span-8-27"><a id="__codelineno-8-27" name="__codelineno-8-27" href="#__codelineno-8-27"></a><span class="w">        </span><span class="p">{</span>
+</span><span id="__span-8-28"><a id="__codelineno-8-28" name="__codelineno-8-28" href="#__codelineno-8-28"></a><span class="w">            </span><span class="c1">// Instanciamos el prefab &#39;pipe&#39; y le pasamos la posición su rotación</span>
+</span><span id="__span-8-29"><a id="__codelineno-8-29" name="__codelineno-8-29" href="#__codelineno-8-29"></a><span class="w">            </span><span class="n">Instantiate</span><span class="p">(</span><span class="n">pipe</span><span class="p">,</span><span class="w"> </span><span class="n">transform</span><span class="p">.</span><span class="n">position</span><span class="p">,</span><span class="w"> </span><span class="n">transform</span><span class="p">.</span><span class="n">rotation</span><span class="p">);</span>
+</span><span id="__span-8-30"><a id="__codelineno-8-30" name="__codelineno-8-30" href="#__codelineno-8-30"></a><span class="w">            </span><span class="n">timer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+</span><span id="__span-8-31"><a id="__codelineno-8-31" name="__codelineno-8-31" href="#__codelineno-8-31"></a><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-8-32"><a id="__codelineno-8-32" name="__codelineno-8-32" href="#__codelineno-8-32"></a>
+</span><span id="__span-8-33"><a id="__codelineno-8-33" name="__codelineno-8-33" href="#__codelineno-8-33"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-8-34"><a id="__codelineno-8-34" name="__codelineno-8-34" href="#__codelineno-8-34"></a><span class="p">}</span>
+</span></code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">1️⃣ <code>timer</code></p>
+<p>Es una variable que guarda <strong>cuánto tiempo ha pasado</strong> desde el último spawn.
+Va aumentando poco a poco.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">2️⃣ <code>spawnRate</code></p>
+<p>Es <strong>cada cuánto tiempo quieres generar un objeto</strong>.</p>
+<blockquote>
+<p>crear un objeto <strong>cada 2 segundos</strong>.</p>
+</blockquote>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">3️⃣ La condición <code>if</code>"</p>
+<blockquote>
+<p>Si el tiempo que ha pasado es <strong>menor que el tiempo necesario para generar otro objeto</strong>.</p>
+</blockquote>
+</div>
+<p>Ejemplo 👇</p>
+<table>
+<thead>
+<tr>
+<th>timer</th>
+<th>spawnRate</th>
+<th>Resultado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0.5</td>
+<td>2</td>
+<td>sigue esperando</td>
+</tr>
+<tr>
+<td>1.2</td>
+<td>2</td>
+<td>sigue esperando</td>
+</tr>
+<tr>
+<td>1.9</td>
+<td>2</td>
+<td>sigue esperando</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition success">
+<p class="admonition-title">4️⃣ Aumentar el tiempo</p>
+</div>
+<div class="language-csharp highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="n">timer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">timer</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">Time</span><span class="p">.</span><span class="n">deltaTime</span><span class="p">;</span>
+</span></code></pre></div>
+<p>Esto añade <strong>el tiempo que pasó desde el último frame</strong>.</p>
+<p>Por ejemplo:</p>
+<table>
+<thead>
+<tr>
+<th>Frame</th>
+<th>deltaTime</th>
+<th>timer</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>0.016</td>
+<td>0.016</td>
+</tr>
+<tr>
+<td>2</td>
+<td>0.016</td>
+<td>0.032</td>
+</tr>
+<tr>
+<td>3</td>
+<td>0.016</td>
+<td>0.048</td>
+</tr>
+</tbody>
+</table>
+<p>Así el temporizador va subiendo <strong>de forma realista y estable</strong> independientemente del número de <code>FPS</code> a los que se esté ejecutando nuestro juego.</p>
+<hr />
+<div class="admonition question">
+<p class="admonition-title">5️⃣ Cuando el tiempo se cumple</p>
+</div>
+<p>Cuando <code>timer</code> llega a <code>spawnRate</code>, se ejecuta el <code>else</code> y <strong>crea un objeto nuevo</strong>.</p>
+<p><code>Instantiate</code> significa literalmente:</p>
+<blockquote>
+<p>crear una copia de un objeto.</p>
+</blockquote>
+<p>Parámetros:</p>
+<table>
+<thead>
+<tr>
+<th>Parámetro</th>
+<th>Significado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>pipe</code></td>
+<td>el prefab que quieres crear</td>
+</tr>
+<tr>
+<td><code>transform.position</code></td>
+<td>dónde aparece</td>
+</tr>
+<tr>
+<td><code>transform.rotation</code></td>
+<td>con qué rotación</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition example">
+<p class="admonition-title">6️⃣ Reiniciar el temporizador</p>
+</div>
+<div class="language-csharp highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="n">timer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+</span></code></pre></div>
+<p>Esto hace que el contador <strong>empiece otra vez</strong>.</p>
+<hr />
+<h5 id="mejorando-el-script">💪 Mejorando el script</h5>
+<hr />
+<p>Ahora ya tenemos el script que genera las tuberías desde el <code>prefab</code> que habíamos creado anteriormente, además se controla la generación de la instancia y el juego va sacando tuberías cada cierto tiempo.</p>
+<p>Pero hemos notado que las primeras tuberías tardan cierto tiempo en aparecer en pantalla y se ve algo cutre. Lo que podemos hacer es que se cree una instancia de las tuberías <strong>nada más arrancar</strong> el juego. Así que si queremos ese efecto, lo que tendremos que hacer es poner el código de la instancia de las tuberías en nuestra función <code>Start()</code> para que sea lo primero que se ejecute cuando se renderice nuestro juego.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="5:1"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">🔹PipeSpawnerScript.cs</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block"></div>
+</div>
+</div>
+<div class="language-csharp highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="k">using</span><span class="w"> </span><span class="nn">UnityEngine</span><span class="p">;</span>
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">PipeSpawnerScript</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">MonoBehaviour</span>
+</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="p">{</span>
+</span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="w">    </span><span class="c1">// Creando el input en el editor de Unity (la propiedad)</span>
+</span><span id="__span-11-6"><a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a><span class="w">    </span><span class="c1">// donde enlazamos el objeto prefab 👉 Pipe</span>
+</span><span id="__span-11-7"><a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a><span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="n">GameObject</span><span class="w"> </span><span class="n">pipe</span><span class="p">;</span>
+</span><span id="__span-11-8"><a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a><span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">spawnRate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span><span class="w"> </span><span class="c1">// cantidad en segundos que debe pasar entre apariciones</span>
+</span><span id="__span-11-9"><a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a><span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">timer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="c1">// Lo hacemos privado porque no lo vamos a cambiar en ningún sitio</span>
+</span><span id="__span-11-10"><a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a>
+</span><span id="__span-11-11"><a id="__codelineno-11-11" name="__codelineno-11-11" href="#__codelineno-11-11"></a>
+</span><span id="__span-11-12"><a id="__codelineno-11-12" name="__codelineno-11-12" href="#__codelineno-11-12"></a><span class="w">    </span><span class="k">void</span><span class="w"> </span><span class="nf">Start</span><span class="p">()</span>
+</span><span id="__span-11-13"><a id="__codelineno-11-13" name="__codelineno-11-13" href="#__codelineno-11-13"></a><span class="w">    </span><span class="p">{</span>
+</span><span id="__span-11-14"><a id="__codelineno-11-14" name="__codelineno-11-14" href="#__codelineno-11-14"></a><span class="w">        </span><span class="n">SpawnPipe</span><span class="p">();</span>
+</span><span id="__span-11-15"><a id="__codelineno-11-15" name="__codelineno-11-15" href="#__codelineno-11-15"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-11-16"><a id="__codelineno-11-16" name="__codelineno-11-16" href="#__codelineno-11-16"></a>
+</span><span id="__span-11-17"><a id="__codelineno-11-17" name="__codelineno-11-17" href="#__codelineno-11-17"></a><span class="w">    </span><span class="k">void</span><span class="w"> </span><span class="nf">Update</span><span class="p">()</span>
+</span><span id="__span-11-18"><a id="__codelineno-11-18" name="__codelineno-11-18" href="#__codelineno-11-18"></a><span class="w">    </span><span class="p">{</span>
+</span><span id="__span-11-19"><a id="__codelineno-11-19" name="__codelineno-11-19" href="#__codelineno-11-19"></a><span class="w">        </span><span class="c1">// Si el contador es MENOR que la tasa de generación</span>
+</span><span id="__span-11-20"><a id="__codelineno-11-20" name="__codelineno-11-20" href="#__codelineno-11-20"></a><span class="w">        </span><span class="c1">// Entonces el temporaizador cuenta en 1</span>
+</span><span id="__span-11-21"><a id="__codelineno-11-21" name="__codelineno-11-21" href="#__codelineno-11-21"></a><span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="n">timer</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">spawnRate</span><span class="p">)</span>
+</span><span id="__span-11-22"><a id="__codelineno-11-22" name="__codelineno-11-22" href="#__codelineno-11-22"></a><span class="w">        </span><span class="p">{</span>
+</span><span id="__span-11-23"><a id="__codelineno-11-23" name="__codelineno-11-23" href="#__codelineno-11-23"></a><span class="w">            </span><span class="n">timer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">timer</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">Time</span><span class="p">.</span><span class="n">deltaTime</span><span class="p">;</span><span class="w">    </span>
+</span><span id="__span-11-24"><a id="__codelineno-11-24" name="__codelineno-11-24" href="#__codelineno-11-24"></a><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-11-25"><a id="__codelineno-11-25" name="__codelineno-11-25" href="#__codelineno-11-25"></a>
+</span><span id="__span-11-26"><a id="__codelineno-11-26" name="__codelineno-11-26" href="#__codelineno-11-26"></a><span class="w">        </span><span class="k">else</span>
+</span><span id="__span-11-27"><a id="__codelineno-11-27" name="__codelineno-11-27" href="#__codelineno-11-27"></a><span class="w">        </span><span class="p">{</span>
+</span><span id="__span-11-28"><a id="__codelineno-11-28" name="__codelineno-11-28" href="#__codelineno-11-28"></a><span class="w">            </span><span class="c1">// Instanciamos el prefab &#39;pipe&#39; y le pasamos la posición su rotación</span>
+</span><span id="__span-11-29"><a id="__codelineno-11-29" name="__codelineno-11-29" href="#__codelineno-11-29"></a><span class="w">            </span><span class="n">SpawnPipe</span><span class="p">();</span>
+</span><span id="__span-11-30"><a id="__codelineno-11-30" name="__codelineno-11-30" href="#__codelineno-11-30"></a><span class="w">            </span><span class="n">timer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+</span><span id="__span-11-31"><a id="__codelineno-11-31" name="__codelineno-11-31" href="#__codelineno-11-31"></a><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-11-32"><a id="__codelineno-11-32" name="__codelineno-11-32" href="#__codelineno-11-32"></a>
+</span><span id="__span-11-33"><a id="__codelineno-11-33" name="__codelineno-11-33" href="#__codelineno-11-33"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-11-34"><a id="__codelineno-11-34" name="__codelineno-11-34" href="#__codelineno-11-34"></a>
+</span><span id="__span-11-35"><a id="__codelineno-11-35" name="__codelineno-11-35" href="#__codelineno-11-35"></a><span class="w">    </span><span class="k">void</span><span class="w"> </span><span class="nf">SpawnPipe</span><span class="p">()</span>
+</span><span id="__span-11-36"><a id="__codelineno-11-36" name="__codelineno-11-36" href="#__codelineno-11-36"></a><span class="w">    </span><span class="p">{</span>
+</span><span id="__span-11-37"><a id="__codelineno-11-37" name="__codelineno-11-37" href="#__codelineno-11-37"></a><span class="w">        </span><span class="n">Instantiate</span><span class="p">(</span><span class="n">pipe</span><span class="p">,</span><span class="w"> </span><span class="n">transform</span><span class="p">.</span><span class="n">position</span><span class="p">,</span><span class="w"> </span><span class="n">transform</span><span class="p">.</span><span class="n">rotation</span><span class="p">);</span>
+</span><span id="__span-11-38"><a id="__codelineno-11-38" name="__codelineno-11-38" href="#__codelineno-11-38"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-11-39"><a id="__codelineno-11-39" name="__codelineno-11-39" href="#__codelineno-11-39"></a><span class="p">}</span>
+</span></code></pre></div>
+<p>Si te fijas, hemos creado una función que se llama <code>SpawnPipe()</code> que lo que hace es justo lo que buscábamos antes, crear una instancia de las tuberías.</p>
+<p>Esta función es llamada tanto al inicio del juego como por cada vez que queramos que se genere un nuevo par de tuberías. Así no repetimos código y limpiamos un poco nuestro script.</p>
+<h4 id="tuberias-con-posicion-aleatoria">🔢 Tuberías con posición aleatoria</h4>
+<hr />
+<p>Ya tenemos las tuberías con su aparición cada X segundos, lo que necesitamos ahora es colocarlas a diferentes alturas para que el juego sea más divertido y dinámico.</p>
+<p>Ten en cuenta que las posiciones que van a camabar se realizan sobre su verticalidad, es decir, sobre el eje <strong>Y</strong>, además tendremos que establecer un rango de posición en dicho eje para que, de manera aleatoria, se elija un valor dentro de dicho rango y renderice nuestro <strong>prefab</strong> de las tuberías.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="6:1"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">🔹PipeSpawnerScript.cs</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block"></div>
+</div>
+</div>
+<div class="language-csharp highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">SpawnPipe</span><span class="p">()</span>
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="w">    </span><span class="p">{</span>
+</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="w">        </span><span class="kt">float</span><span class="w"> </span><span class="n">lowestPoint</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">transform</span><span class="p">.</span><span class="n">position</span><span class="p">.</span><span class="n">y</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">heightOffset</span><span class="p">;</span>
+</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="w">        </span><span class="kt">float</span><span class="w"> </span><span class="n">highestPoint</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">transform</span><span class="p">.</span><span class="n">position</span><span class="p">.</span><span class="n">y</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">heightOffset</span><span class="p">;</span>
+</span><span id="__span-12-5"><a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="w">        </span><span class="n">Vector3</span><span class="w"> </span><span class="n">randomPosition</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Vector3</span><span class="p">(</span>
+</span><span id="__span-12-6"><a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a><span class="w">            </span><span class="n">transform</span><span class="p">.</span><span class="n">position</span><span class="p">.</span><span class="n">x</span><span class="p">,</span>
+</span><span id="__span-12-7"><a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a><span class="w">            </span><span class="n">Random</span><span class="p">.</span><span class="n">Range</span><span class="p">(</span><span class="n">lowestPoint</span><span class="p">,</span><span class="w"> </span><span class="n">highestPoint</span><span class="p">),</span>
+</span><span id="__span-12-8"><a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a><span class="w">            </span><span class="mi">0</span>
+</span><span id="__span-12-9"><a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a><span class="w">        </span><span class="p">);</span>
+</span><span id="__span-12-10"><a id="__codelineno-12-10" name="__codelineno-12-10" href="#__codelineno-12-10"></a>
+</span><span id="__span-12-11"><a id="__codelineno-12-11" name="__codelineno-12-11" href="#__codelineno-12-11"></a><span class="w">        </span><span class="n">Debug</span><span class="p">.</span><span class="n">Log</span><span class="p">(</span><span class="n">randomPosition</span><span class="p">);</span>
+</span><span id="__span-12-12"><a id="__codelineno-12-12" name="__codelineno-12-12" href="#__codelineno-12-12"></a>
+</span><span id="__span-12-13"><a id="__codelineno-12-13" name="__codelineno-12-13" href="#__codelineno-12-13"></a><span class="w">        </span><span class="n">Instantiate</span><span class="p">(</span><span class="n">pipe</span><span class="p">,</span><span class="w"> </span><span class="n">randomPosition</span><span class="p">,</span><span class="w"> </span><span class="n">transform</span><span class="p">.</span><span class="n">rotation</span><span class="p">);</span>
+</span><span id="__span-12-14"><a id="__codelineno-12-14" name="__codelineno-12-14" href="#__codelineno-12-14"></a><span class="w">    </span><span class="p">}</span>
+</span></code></pre></div>
+<blockquote>
+<p>Calcular el punto más bajo</p>
+</blockquote>
+<div class="language-csharp highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="kt">float</span><span class="w"> </span><span class="n">lowestPoint</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">transform</span><span class="p">.</span><span class="n">position</span><span class="p">.</span><span class="n">y</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">heightOffset</span><span class="p">;</span>
+</span></code></pre></div>
+<p>Aquí calculamos el <strong>límite inferior</strong> donde puede aparecer la tubería.</p>
+<ul>
+<li><code>transform.position.y</code> → altura del objeto que contiene este script.</li>
+<li><code>heightOffset</code> → cuánto puede moverse hacia arriba o abajo.</li>
+</ul>
+<blockquote>
+<p>Calcular el punto más alto</p>
+</blockquote>
+<div class="language-csharp highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="kt">float</span><span class="w"> </span><span class="n">highestPoint</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">transform</span><span class="p">.</span><span class="n">position</span><span class="p">.</span><span class="n">y</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">heightOffset</span><span class="p">;</span>
+</span></code></pre></div>
+<p>Esto calcula el <strong>límite superior</strong>.</p>
+<blockquote>
+<p>Crear una posición aleatoria</p>
+</blockquote>
+<div class="language-csharp highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="n">Vector3</span><span class="w"> </span><span class="n">randomPosition</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Vector3</span><span class="p">(</span>
+</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="w">    </span><span class="n">transform</span><span class="p">.</span><span class="n">position</span><span class="p">.</span><span class="n">x</span><span class="p">,</span>
+</span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="w">    </span><span class="n">Random</span><span class="p">.</span><span class="n">Range</span><span class="p">(</span><span class="n">lowestPoint</span><span class="p">,</span><span class="w"> </span><span class="n">highestPoint</span><span class="p">),</span>
+</span><span id="__span-15-4"><a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a><span class="w">    </span><span class="mi">0</span>
+</span><span id="__span-15-5"><a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a><span class="p">);</span>
+</span></code></pre></div>
+<p>Aquí creamos una <strong>posición en el espacio 3D</strong>.</p>
+<p>Un <code>Vector3</code> tiene tres valores:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>(x, y, z)
+</span></code></pre></div>
+<p>En tu caso:</p>
+<table>
+<thead>
+<tr>
+<th>Valor</th>
+<th>Qué significa</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>x</code></td>
+<td>misma posición horizontal del spawner</td>
+</tr>
+<tr>
+<td><code>y</code></td>
+<td>altura aleatoria</td>
+</tr>
+<tr>
+<td><code>z</code></td>
+<td>0 (porque es un juego 2D)</td>
+</tr>
+</tbody>
+</table>
+<p><code>Random.Range()</code> devuelve un número aleatorio entre <code>lowestPoint</code> y <code>highestPoint</code>.</p>
+<p>Ejemplo posible:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>(10, 3.4, 0)
+</span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>(10, 6.1, 0)
+</span><span id="__span-17-3"><a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a>(10, 7.8, 0)
+</span></code></pre></div>
+<hr />
+<blockquote>
+<p>Mostrar la posición en consola</p>
+</blockquote>
+<div class="language-csharp highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="n">Debug</span><span class="p">.</span><span class="n">Log</span><span class="p">(</span><span class="n">randomPosition</span><span class="p">);</span>
+</span></code></pre></div>
+<p>Esto imprime la posición generada en la <strong>Console de Unity</strong>.</p>
+<p>Ejemplo de salida:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>(10.0, 6.23, 0.0)
+</span></code></pre></div>
+<p>Sirve para <strong>debugging</strong> (comprobar que el código funciona).</p>
+<blockquote>
+<p>Crear la tubería</p>
+</blockquote>
+<div class="language-csharp highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="n">Instantiate</span><span class="p">(</span><span class="n">pipe</span><span class="p">,</span><span class="w"> </span><span class="n">randomPosition</span><span class="p">,</span><span class="w"> </span><span class="n">transform</span><span class="p">.</span><span class="n">rotation</span><span class="p">);</span>
+</span></code></pre></div>
+<p>Aquí Unity crea una <strong>copia del prefab <code>pipe</code></strong>.</p>
+<p>Parámetros:</p>
+<table>
+<thead>
+<tr>
+<th>Parámetro</th>
+<th>Significado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>pipe</code></td>
+<td>prefab de la tubería</td>
+</tr>
+<tr>
+<td><code>randomPosition</code></td>
+<td>dónde aparece</td>
+</tr>
+<tr>
+<td><code>transform.rotation</code></td>
+<td>con qué rotación aparece</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<blockquote>
+<p>🎮 Qué ocurre en el juego</p>
+</blockquote>
+<p>Cada vez que se llama a <code>SpawnPipe()</code>:</p>
+<ol>
+<li>Calcula un rango vertical.</li>
+<li>Elige una altura aleatoria.</li>
+<li>Crea la tubería ahí.</li>
+</ol>
+<p>Visualmente:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>altura aleatoria
+</span><span id="__span-21-2"><a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a>      ↓
+</span><span id="__span-21-3"><a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a>      pipe
+</span><span id="__span-21-4"><a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a>
+</span><span id="__span-21-5"><a id="__codelineno-21-5" name="__codelineno-21-5" href="#__codelineno-21-5"></a>altura distinta
+</span><span id="__span-21-6"><a id="__codelineno-21-6" name="__codelineno-21-6" href="#__codelineno-21-6"></a>      ↓
+</span><span id="__span-21-7"><a id="__codelineno-21-7" name="__codelineno-21-7" href="#__codelineno-21-7"></a>      pipe
+</span><span id="__span-21-8"><a id="__codelineno-21-8" name="__codelineno-21-8" href="#__codelineno-21-8"></a>
+</span><span id="__span-21-9"><a id="__codelineno-21-9" name="__codelineno-21-9" href="#__codelineno-21-9"></a>altura distinta
+</span><span id="__span-21-10"><a id="__codelineno-21-10" name="__codelineno-21-10" href="#__codelineno-21-10"></a>      ↓
+</span><span id="__span-21-11"><a id="__codelineno-21-11" name="__codelineno-21-11" href="#__codelineno-21-11"></a>      pipe
+</span></code></pre></div>
+<hr />
 
 
 
