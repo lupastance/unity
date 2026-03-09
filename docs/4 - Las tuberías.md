@@ -407,5 +407,145 @@ Si te fijas, hemos creado una función que se llama `SpawnPipe()` que lo que hac
 
 Esta función es llamada tanto al inicio del juego como por cada vez que queramos que se genere un nuevo par de tuberías. Así no repetimos código y limpiamos un poco nuestro script.
 
-### 🔢 tuberías con posición aleatoria
+#### 🔢 Tuberías con posición aleatoria
 
+---
+
+Ya tenemos las tuberías con su aparición cada X segundos, lo que necesitamos ahora es colocarlas a diferentes alturas para que el juego sea más divertido y dinámico.
+
+Ten en cuenta que las posiciones que van a camabar se realizan sobre su verticalidad, es decir, sobre el eje **Y**, además tendremos que establecer un rango de posición en dicho eje para que, de manera aleatoria, se elija un valor dentro de dicho rango y renderice nuestro **prefab** de las tuberías.
+
+=== "🔹PipeSpawnerScript.cs"
+```csharp
+ void SpawnPipe()
+    {
+        float lowestPoint = transform.position.y - heightOffset;
+        float highestPoint = transform.position.y + heightOffset;
+        Vector3 randomPosition = new Vector3(
+            transform.position.x,
+            Random.Range(lowestPoint, highestPoint),
+            0
+        );
+
+        Debug.Log(randomPosition);
+
+        Instantiate(pipe, randomPosition, transform.rotation);
+    }
+```
+
+>Calcular el punto más bajo
+
+```csharp
+float lowestPoint = transform.position.y - heightOffset;
+```
+
+Aquí calculamos el **límite inferior** donde puede aparecer la tubería.
+
+* `transform.position.y` → altura del objeto que contiene este script.
+* `heightOffset` → cuánto puede moverse hacia arriba o abajo.
+
+>Calcular el punto más alto
+
+```csharp
+float highestPoint = transform.position.y + heightOffset;
+```
+
+Esto calcula el **límite superior**.
+
+>Crear una posición aleatoria
+
+```csharp
+Vector3 randomPosition = new Vector3(
+    transform.position.x,
+    Random.Range(lowestPoint, highestPoint),
+    0
+);
+```
+
+Aquí creamos una **posición en el espacio 3D**.
+
+Un `Vector3` tiene tres valores:
+
+```
+(x, y, z)
+```
+
+En tu caso:
+
+| Valor | Qué significa                         |
+| ----- | ------------------------------------- |
+| `x`   | misma posición horizontal del spawner |
+| `y`   | altura aleatoria                      |
+| `z`   | 0 (porque es un juego 2D)             |
+
+`Random.Range()` devuelve un número aleatorio entre `lowestPoint` y `highestPoint`.
+
+Ejemplo posible:
+
+```
+(10, 3.4, 0)
+(10, 6.1, 0)
+(10, 7.8, 0)
+```
+
+---
+
+>Mostrar la posición en consola
+
+```csharp
+Debug.Log(randomPosition);
+```
+
+Esto imprime la posición generada en la **Console de Unity**.
+
+Ejemplo de salida:
+
+```
+(10.0, 6.23, 0.0)
+```
+
+Sirve para **debugging** (comprobar que el código funciona).
+
+>Crear la tubería
+
+```csharp
+Instantiate(pipe, randomPosition, transform.rotation);
+```
+
+Aquí Unity crea una **copia del prefab `pipe`**.
+
+Parámetros:
+
+| Parámetro            | Significado              |
+| -------------------- | ------------------------ |
+| `pipe`               | prefab de la tubería     |
+| `randomPosition`     | dónde aparece            |
+| `transform.rotation` | con qué rotación aparece |
+
+---
+
+>🎮 Qué ocurre en el juego
+
+Cada vez que se llama a `SpawnPipe()`:
+
+1. Calcula un rango vertical.
+2. Elige una altura aleatoria.
+3. Crea la tubería ahí.
+
+Visualmente:
+
+```
+altura aleatoria
+      ↓
+      pipe
+
+altura distinta
+      ↓
+      pipe
+
+altura distinta
+      ↓
+      pipe
+```
+
+---
